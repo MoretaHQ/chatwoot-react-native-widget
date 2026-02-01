@@ -17,6 +17,9 @@ const propTypes = {
   locale: PropTypes.string,
   customAttributes: PropTypes.shape({}),
   closeModal: PropTypes.func,
+  articleUrl: PropTypes.string,
+  articleSlug: PropTypes.string,
+  portalSlug: PropTypes.string,
 };
 
 const WebViewComponent = ({
@@ -28,6 +31,9 @@ const WebViewComponent = ({
   user = {},
   customAttributes = {},
   closeModal,
+  articleUrl,
+  articleSlug,
+  portalSlug,
 }) => {
   const [currentUrl, setCurrentUrl] = React.useState(null);
   let widgetUrl = `${baseUrl}/widget?website_token=${websiteToken}&locale=${locale}`;
@@ -35,6 +41,17 @@ const WebViewComponent = ({
   if (cwCookie) {
     widgetUrl = `${widgetUrl}&cw_conversation=${cwCookie}`;
   }
+
+  // Deep link to article if provided
+  if (articleUrl) {
+    const encodedUrl = encodeURIComponent(articleUrl);
+    widgetUrl = `${widgetUrl}#/article?link=${encodedUrl}`;
+  } else if (articleSlug && portalSlug) {
+    const fullArticleUrl = `${baseUrl}/hc/${portalSlug}/articles/${articleSlug}`;
+    const encodedUrl = encodeURIComponent(fullArticleUrl);
+    widgetUrl = `${widgetUrl}#/article?link=${encodedUrl}`;
+  }
+
   const injectedJavaScript = generateScripts({
     user,
     locale,

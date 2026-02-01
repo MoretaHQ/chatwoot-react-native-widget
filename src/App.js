@@ -22,6 +22,9 @@ const propTypes = {
   colorScheme: PropTypes.oneOf(['dark', 'light', 'auto']),
   customAttributes: PropTypes.shape({}),
   closeModal: PropTypes.func,
+  articleUrl: PropTypes.string,
+  articleSlug: PropTypes.string,
+  portalSlug: PropTypes.string,
 };
 
 const ChatWootWidget = ({
@@ -33,6 +36,9 @@ const ChatWootWidget = ({
   colorScheme = 'light',
   customAttributes = {},
   closeModal,
+  articleUrl,
+  articleSlug,
+  portalSlug,
 }) => {
   const [cwCookie, setCookie] = useState('');
 
@@ -68,6 +74,9 @@ const ChatWootWidget = ({
           colorScheme={colorScheme}
           customAttributes={customAttributes}
           closeModal={closeModal}
+          articleUrl={articleUrl}
+          articleSlug={articleSlug}
+          portalSlug={portalSlug}
         />
       </SafeAreaView>
     </Modal>
