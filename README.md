@@ -179,8 +179,53 @@ The whole example is in the `/example` folder.
     <td> Object </td>
     <td>Additional information about the customer</td>
   </tr>
+  <tr>
+    <td>articleUrl</td>
+    <td> - </td>
+    <td> String </td>
+    <td>Full URL to a help center article to open on widget load</td>
+  </tr>
+  <tr>
+    <td>articleSlug</td>
+    <td> - </td>
+    <td> String </td>
+    <td>Article slug (e.g., "1677693021-how-to-use-webhooks") - requires portalSlug</td>
+  </tr>
+  <tr>
+    <td>portalSlug</td>
+    <td> - </td>
+    <td> String </td>
+    <td>Help center portal slug (e.g., "user-guide") - required with articleSlug</td>
+  </tr>
  </tbody>
 </table>
+
+### Deep linking to articles
+
+You can open the widget directly to a specific help center article using either a full URL or slug-based approach:
+
+```jsx
+// Option 1: Using full article URL
+<ChatWootWidget
+  websiteToken={websiteToken}
+  baseUrl={baseUrl}
+  articleUrl="https://help.example.com/hc/my-portal/articles/123-getting-started"
+  isModalVisible={showWidget}
+  closeModal={() => toggleWidget(false)}
+/>
+
+// Option 2: Using slugs (constructs URL from baseUrl)
+<ChatWootWidget
+  websiteToken={websiteToken}
+  baseUrl={baseUrl}
+  portalSlug="my-portal"
+  articleSlug="123-getting-started"
+  isModalVisible={showWidget}
+  closeModal={() => toggleWidget(false)}
+/>
+```
+
+This is useful for contextual help, allowing you to link users directly to relevant documentation from within your app.
 
 ## Feedback & Contributing
 
