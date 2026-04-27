@@ -37,7 +37,7 @@ Typically used as a modal overlay that can be toggled on/off, providing a chat i
 ## Local Development & Testing
 The widget source code is located in the `src/` directory. To test changes locally:
 
-1. **Navigate to example project**: `cd Example`
+1. **Navigate to example project**: `cd example`
 2. **Install dependencies**: `npm install` or `yarn install`
 3. **For iOS**: `cd ios && pod install && cd ..`
 4. **Run on iOS**: `npx react-native run-ios`
