@@ -129,7 +129,6 @@ const WebViewComponent = ({
         onShouldStartLoadWithRequest={onShouldStartLoadWithRequest}
         onNavigationStateChange={handleWebViewNavigationStateChange}
         onLoadStart={() => setLoading(true)}
-        onLoadProgress={() => setLoading(true)}
         onLoadEnd={() => setLoading(false)}
         scrollEnabled
       />
